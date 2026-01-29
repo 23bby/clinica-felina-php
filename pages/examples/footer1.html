@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<footer class="main-footer">
+    <strong>Copyright &copy; 2010-2023 Clinica felina Marconi.</strong>
+    All rights reserved. 
+  </footer>
+
+
+ <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+ 
+
+ 
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- per cambiare colore al pulsante <script>
+    $(document).ready(function(){
+        $("#pulsante").click(function(){
+            $(this).css("background-color", "red");
+        });
+    });
+    </script> -->
+
+<!-- cambiare doppiamente colore al pusante -->
+ <script>
+    $(document).ready(function(){
+        var isRed = false;
+        $("#pulsante").click(function(){
+            if (isRed) {
+                $(this).css("background-color", "green");
+                isRed = false;
+            } else {
+                $(this).css("background-color", "orange");
+                isRed = true;
+            }
+        });
+    });
+    </script> 
+
+
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script> 
+
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+
+
+<!-- con questo si sposta a sinistra  <script>
+$("#tabProva").hover(function(){
+    $(this).animate({left: '300px'}, 2000);
+}, function(){
+    $(this).animate({left: '0px'}, 2000);
+});
+</script> -->
+
+<!-- <script>  con questo si ingrandisce, e torna alla dimensione originale a tutto schermo ma non si riadatta se la pagina si riduce 
+$(document).ready(function(){
+  var originalHeight = $("#tabProva").css('height');
+  var originalWidth = $("#tabProva").css('width');
+  $("#tabProva").hover(function(){
+    $(this).stop().animate({
+        height: '300px',
+        width: '600px'
+    });
+ }, function(){
+    $(this).stop().animate({
+        height: originalHeight,
+        width: originalWidth
+  }); 
+});
+});
+</script> -->
+
+<script> <!--  con questo si ingrandisce e dovrebbe riadattarsi alla dimensione più piccola della pagina ma non lo fa  -->
+$(document).ready(function(){
+  var originalHeight = $("#tabProva").css('height');
+  var originalWidth = $("#tabProva").css('width');
+
+  $(window).resize(function() {
+    originalHeight = $("#tabProva").css('height');
+    originalWidth = $("#tabProva").css('width');
+  });
+
+  $("#tabProva").hover(function(){
+    $(this).animate({
+        height: '300px',
+        width: '600px'
+    });
+ }, function(){
+    $(this).animate({
+        height: originalHeight,
+        width: originalWidth
+  }); 
+});
+});
+</script>  
+
+
+<!-- <script>  con questo si ingrandisce ma a dimensioni fisse e non responsive
+$(document).ready(function(){
+  $("#tabProva").hover(function(){
+    $(this).animate({
+        height: '300px',
+        width: '600px'
+    });
+ }, function(){
+    $(this).animate({
+        height: '200px',
+        width: '530px'
+  }); 
+});
+});
+</script> -->
+
+
+<!-- <script> 
+ $("#toggle-btn").click(function() {
+      $("#tabProva").slideToggle("slow", function() {
+        left: 300
+      });
+    });
+</script> -->
+
+<!-- <script> in pratica devo concatenare animate all'hover function che sta sopra per fargli cambiare le dimensioni
+$(document).ready(function () {
+ $("#tabProva").click(function() {
+      $("#tabProva").animate({
+        height: '300px',
+        width: '600px'
+    });
+});
+});
+</script> -->
+
+<!-- <script>
+  $(document).ready(function () {
+    
+        $("#tabProva").mouseenter(function(){
+       alert("You entered p1!");
+      });
+    });
+</script> -->
+
+<!-- <script>
+$(document).ready(function(){
+    // Toggles paragraphs display with fading
+    $("#tabProva").click(function(){
+        $("#tabProva").fadeToggle();
+    });
+});
+</script> -->
+
+    <!-- $(".box").hover(function(){
+        $(this).find("tabProva").stop(true, true).fadeOut();
+    }, function(){
+        $(this).find("img").stop(true, true).fadeIn();
+    }); -->
+
+
+<!-- questo è in jquery, i successivi in javascript -->
+<script> 
+    $(function () {
+    var areaChartData = {
+      labels  : ['0-30 €', '31-50 €', '51-100 €', 'oltre 100 €'],
+      datasets: [
+        {
+          label               : '% nella fascia di spesa',
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [22.5, 31.1, 28.3, 18.1]
+        },
+      ]
+    }
+   
+    var barChartCanvas = $('#barChart').get(0).getContext('2d')
+    var barChartData = $.extend(true, {}, areaChartData)
+
+    var barChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      datasetFill: false
+      }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    })
+})
+
+</script>
+
+<!-- questo è in jquery, prende i dati dal database - i successivi sono in javascript -->
+<script> 
+    $(function () {
+    var areaChartData = {
+      labels  : ['0-30 €', '31-50 €', '51-100 €', 'oltre 100 €'],
+      datasets: [
+        {
+          label               : '% nella fascia di spesa',
+          data                : [<?php echo $prodotti[1]["prezzo"]; ?>, 
+                                 31.1, 
+                                 28.3, 
+                                 18.1],
+          backgroundColor     : 'rgba(60,141,188,0.9)',
+          borderColor         : 'rgba(60,141,188,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)'
+          
+        },
+      ]
+    }
+   
+    var barChartCanvas = $('#barChart1').get(0).getContext('2d')
+    var barChartData = $.extend(true, {}, areaChartData)
+
+    var barChartOptions = {
+      maintainAspectRatio : false,
+      responsive : true,
+      datasetFill: true
+      }
+
+    new Chart(barChartCanvas, {
+      type: 'bar',
+      data: barChartData,
+      options: barChartOptions
+    })
+})
+
+</script>
+
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['2017', '2018', '2019', '2022'],
+      datasets: [{
+        label: '% famiglie',
+        data: [33, 32.4, 33.6, 37.7, 40],
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      scales: {
+        y: {    
+        type: 'linear',
+        suggestedMin: 0,
+        suggestedMax: 40,
+        stepSize: 10
+        }
+      }
+    }
+  });
+</script>
+
+   
+
+
+<script>
+  const ctx1 = document.getElementById('myNewChart');
+
+  new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['Cani', 'Gatti', 'Pesci', 'Uccelli', 'Tartarughe', 'Conigli', 'Criceti'],
+      datasets: [{
+       label: '% animali',
+        data: [44.7, 35.4, 5.1, 4.2, 2.6, 2, 1.1, 50],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+        type: 'linear',
+        grace: 5,
+        max: 100
+        }
+      }
+    }
+  });
+</script>
+
+<!-- con questo si sposta a sinistra l'ultimo grafico <script>
+$("#cardProva").hover(function(){
+    $(this).animate({left: '300px'}, 2000);
+}, function(){
+    $(this).animate({left: '0px'}, 2000);
+});
+</script> -->
+
+<script> <!-- con questo si ingrandisce l'ultimo grafico -->
+$(document).ready(function(){
+  $("#cardProva").hover(function(){
+    $(this).animate({
+        height: '450px',
+        width: '700px'
+    });
+ }, function(){
+    $(this).animate({
+        height: '400px',
+        width: '600px'
+  }); 
+});
+});
+</script> 
+
+
+</body>
+</html>
+
+
+
