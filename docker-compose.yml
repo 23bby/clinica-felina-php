@@ -1,11 +1,22 @@
-version: "3"
 services:
-  admin:
+  app:
     build: .
-    command: npm run dev
     ports:
-      - 3000:3000
-      - 3001:3001
+      - "8080:80"
     volumes:
-    - .:/code
-    - /code/node_modules
+      - .:/var/www/html:Z  # Lo :Z serve per i permessi su Fedora/SELinux
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=clinica_veterinaria
+      - MYSQL_USER=user_clinica
+      - MYSQL_PASSWORD=password_segreta
+    ports:
+      - "3306:3306"
+    volumes:
+      # Se hai un file .sql nella cartella /SQL, questo lo esegue all'avvio!
+      - ./SQL:/docker-entrypoint-initdb.d:Z

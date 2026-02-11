@@ -1,12 +1,11 @@
-FROM node:14
+# Usiamo un'immagine ufficiale PHP con Apache
+FROM php:8.2-apache
 
-WORKDIR /code
+# Installiamo le estensioni per il database (es. PDO MySQL)
+RUN docker-php-ext-install pdo pdo_mysql
 
-COPY package.json /code/package.json
-COPY package-lock.json /code/package-lock.json
+# Copiamo i file del tuo progetto nel container
+COPY . /var/www/html/
 
-RUN npm install
-
-COPY . /code
-
-CMD ["npm", "run", "dev"]
+# Diamo i permessi corretti
+RUN chown -R www-data:www-data /var/www/html
